@@ -48,7 +48,6 @@ int main()
         float delta = toMilliseconds(time1) - toMilliseconds(time);
         time = time1;
         delta = delta / 1000.f;
-        std::cout << delta<<'\n';
         window.clear();
         window.draw(controller);
         window.display();
