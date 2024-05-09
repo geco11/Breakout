@@ -48,6 +48,7 @@ int main()
         float delta = toMilliseconds(time1) - toMilliseconds(time);
         time = time1;
         delta = delta / 1000.f;
+        controller.tick(delta);
         window.clear();
         window.draw(controller);
         window.display();

@@ -2,27 +2,35 @@
 #include<iostream>
 
 
-Platform::Platform()
+void Platform::syncScale()
 {
-	pos.x = globalConfigs.getGameScreenSize().x / 2.0;
-	pos.y= globalConfigs.getGameScreenSize().y - (size.x/2);
+	sf::Vector2f sizePix;
+	sizePix.x = globalConfigs.getLen() * size.x;
+	sizePix.y = globalConfigs.getLen() * size.y;
+	Sprite.setScale(sf::Vector2f(sizePix.x / texture.getSize().x, sizePix.y / texture.getSize().y));
 }
 
-void Platform::draw(sf::RenderTarget& target, sf::RenderStates states)const
+void Platform::syncPos()
 {
-	sf::Texture texture;
+	Sprite.setPosition(pos * globalConfigs.getLen());
+}
+
+Platform::Platform()
+{
 	if (!texture.loadFromFile("Pics/platform.png"))
 	{
 		// Error...
 	}
-	// a=y/x
-	sf::Sprite Sprite;
-	sf::Vector2f sizePix;
-	sizePix.x = globalConfigs.getLen() * size.x;
-	sizePix.y = globalConfigs.getLen() * size.y;
+	pos.x = globalConfigs.getGameScreenSize().x / 2.0;
+	pos.y= globalConfigs.getGameScreenSize().y - (size.x/2);
 	Sprite.setTexture(texture);
-	Sprite.setScale(sf::Vector2f(sizePix.x/ texture.getSize().x, sizePix.y / texture.getSize().y));
-    Sprite.setPosition(pos*globalConfigs.getLen());
+	syncPos();
+	syncScale();
+}
+
+void Platform::draw(sf::RenderTarget& target, sf::RenderStates states)const
+{
+	
 	target.draw(Sprite);
 	/*sf::RectangleShape plat(sf::Vector2f(50,13 ));
 	plat.setFillColor(sf::Color::Blue);

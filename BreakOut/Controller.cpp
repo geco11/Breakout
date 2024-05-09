@@ -13,4 +13,5 @@ void Controller::draw(sf::RenderTarget& target, sf::RenderStates states) const
 }
 void Controller::tick(float delta) {
 	this->delta = delta;
+	platform.syncPos();
 }
