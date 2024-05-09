@@ -10,8 +10,8 @@ class Controller:public sf::Drawable
 	float delta;
 	LevelManager level;
 public:
+	void buttonChange(sf::Keyboard::Key a, bool isPressed);
 	Controller() {}
 	void tick(float delta);
-	void movePlatform(sf::Vector2f a);
 	void draw(sf::RenderTarget& target, sf::RenderStates states)const override;
 };

@@ -26,12 +26,10 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
             if (event.type == sf::Event::KeyPressed) {
-                if (event.key.code == sf::Keyboard::Right)
-                    controller.movePlatform(sf::Vector2f(0.2, 0));
+                    controller.buttonChange(event.key.code,true);
             }
-            if (event.type == sf::Event::KeyPressed) {
-                if (event.key.code == sf::Keyboard::Left)
-                    controller.movePlatform(sf::Vector2f(-0.2,0));
+            if (event.type == sf::Event::KeyReleased) {
+                controller.buttonChange(event.key.code,false);
             }
             if (event.type == sf::Event::Resized) {
                 view.setSize({

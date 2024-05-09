@@ -1,9 +1,6 @@
 #include "Controller.h"
 
-void Controller::movePlatform(sf::Vector2f a)
-{
-	platform.move(a);
-}
+
 
 void Controller::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
@@ -11,7 +8,11 @@ void Controller::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(level);
 	target.draw(proj);
 }
+void Controller::buttonChange(sf::Keyboard::Key a, bool isPressed)
+{
+	platform.buttonChange(a, isPressed);
+}
 void Controller::tick(float delta) {
 	this->delta = delta;
-	platform.syncPos();
+	platform.tick(delta);
 }

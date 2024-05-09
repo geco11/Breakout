@@ -15,6 +15,25 @@ void Platform::syncPos()
 	Sprite.setPosition(pos * globalConfigs.getLen());
 }
 
+void Platform::buttonChange(sf::Keyboard::Key a,bool isPressed)
+{
+	switch (a)
+	{
+	case sf::Keyboard::Left:
+		if(isPressed)
+		  LeftButton = -1;
+		else
+			LeftButton = 0;
+		break;
+	case sf::Keyboard::Right:
+		if (isPressed)
+			RightButton = 1;
+		else
+			RightButton = 0;
+		break;
+	}
+}
+
 Platform::Platform()
 {
 	if (!texture.loadFromFile("Pics/platform.png"))
@@ -41,4 +60,10 @@ void Platform::draw(sf::RenderTarget& target, sf::RenderStates states)const
 void Platform::move(sf::Vector2f shift)
 {
 	pos += shift;
+}
+
+void Platform::tick(float delta)
+{
+	move({ (LeftButton + RightButton) * delta*speed,0 });
+	syncPos();
 }
