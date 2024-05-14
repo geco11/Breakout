@@ -26,3 +26,4 @@ void Actors::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(Sprite);
 }
+std::map<std::string, sf::Texture> Actors::library={};

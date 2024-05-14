@@ -3,6 +3,7 @@
 class Actors:public sf::Drawable
 {
 	sf::Texture texture;
+	static std::map<std::string, sf::Texture> library;
 	sf::Sprite Sprite;
 protected:
 	sf::Vector2f pos;	
