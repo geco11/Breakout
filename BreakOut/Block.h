@@ -1,14 +1,11 @@
 #pragma once
 #include"Configs.h"
+#include"Actors.h"
 #include<SFML/Graphics.hpp>
-class Block :public sf::Drawable
+class Block :public Actors
 {
-	sf::Vector2f pos;
-	sf::Texture tex;
-	sf::Sprite Sprite;
+	
 public:
-	void syncScale();
 	Block(sf::Vector2f position);
-	void draw(sf::RenderTarget& target, sf::RenderStates states)const override;
 };
 

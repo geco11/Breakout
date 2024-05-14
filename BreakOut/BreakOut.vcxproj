@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actors.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BreakOut.cpp" />
     <ClCompile Include="Controller.cpp" />
@@ -137,6 +138,7 @@
     <ClCompile Include="Projectile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actors.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="LevelManager.h" />

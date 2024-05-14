@@ -7,6 +7,8 @@ class Configs {
 	sf::Vector2i screenSize;
 public:
 	void setScreen(sf::Vector2i screenSize);
+	/**
+	screen size is abstract*/
 	sf::Vector2f getGameScreenSize()const;
 	void setGameScreen(sf::Vector2f g);
 	float getLen()const;

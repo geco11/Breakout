@@ -2,18 +2,6 @@
 #include<iostream>
 
 
-void Platform::syncScale()
-{
-	sf::Vector2f sizePix;
-	sizePix.x = globalConfigs.getLen() * size.x;
-	sizePix.y = globalConfigs.getLen() * size.y;
-	Sprite.setScale(sf::Vector2f(sizePix.x / texture.getSize().x, sizePix.y / texture.getSize().y));
-}
-
-void Platform::syncPos()
-{
-	Sprite.setPosition(pos * globalConfigs.getLen());
-}
 
 void Platform::buttonChange(sf::Keyboard::Key a,bool isPressed)
 {
@@ -36,34 +24,26 @@ void Platform::buttonChange(sf::Keyboard::Key a,bool isPressed)
 
 Platform::Platform()
 {
-	if (!texture.loadFromFile("Pics/platform.png"))
-	{
-		// Error...
-	}
+	size = { 2,0.5 };
+
+	loadTexture("Pics/platform.png");
 	pos.x = globalConfigs.getGameScreenSize().x / 2.0;
 	pos.y= globalConfigs.getGameScreenSize().y - (size.x/2);
-	Sprite.setTexture(texture);
 	syncPos();
 	syncScale();
 }
 
-void Platform::draw(sf::RenderTarget& target, sf::RenderStates states)const
-{
-	
-	target.draw(Sprite);
-	/*sf::RectangleShape plat(sf::Vector2f(50,13 ));
-	plat.setFillColor(sf::Color::Blue);
-	plat.setPosition(pos);
-	target.draw(plat);*/
-}
 
 void Platform::move(sf::Vector2f shift)
 {
-	pos += shift;
+	sf::Vector2f newPos = pos + shift;
+	if (newPos.x > 0 && newPos.x + size.x < globalConfigs.getGameScreenSize().x)
+		pos+=shift;
 }
 
 void Platform::tick(float delta)
 {
+
 	move({ (LeftButton + RightButton) * delta*speed,0 });
 	syncPos();
 }

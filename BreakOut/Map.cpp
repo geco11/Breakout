@@ -29,7 +29,7 @@ void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	for (int i = 0;i<map.size(); i++) {
 		for (int j = 0; j < map[i].size(); j++) {
 			if (map[i][j] == '#') {
-				Block b(sf::Vector2f(j* globalConfigs.getLen(),i*globalConfigs.getLen()));
+				Block b(sf::Vector2f(j,i));
 				target.draw(b);
 			}
 		}
