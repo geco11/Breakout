@@ -15,4 +15,5 @@ void Controller::buttonChange(sf::Keyboard::Key a, bool isPressed)
 void Controller::tick(float delta) {
 	this->delta = delta;
 	platform.tick(delta);
+	proj.tick(delta);
 }
