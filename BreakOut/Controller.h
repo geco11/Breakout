@@ -1,5 +1,6 @@
 #pragma once
 #include"Platform.h"
+#include"Screen.h"
 #include"Configs.h"
 #include"Projectile.h"
 #include"LevelManager.h"
@@ -7,6 +8,7 @@ class Controller:public sf::Drawable
 {
 	Platform platform;
 	Projectile proj;
+	Screen screen;
 	float delta;
 	LevelManager level;
 public:

@@ -12,13 +12,13 @@ Projectile::Projectile()
 	syncScale();
 }
 void Projectile::tick(float delta){
-	float a = sqrt(dir.x * dir.x + dir.y * dir.y);
-	sf::Vector2f newPos= (dir / a) * (speed * delta)+pos;
-	if (newPos.y  >= globalConfigs.getGameScreenSize().y || newPos.y <= 0)
+	float length = sqrt(dir.x * dir.x + dir.y * dir.y);
+	sf::Vector2f newPos= (dir / length) * (speed * delta)+pos;
+	if (newPos.y + size.y >= globalConfigs.getGameScreenSize().y || newPos.y <= 0)
 		dir.y *= -1;
-	if (newPos.x + size.x >= globalConfigs.getGameScreenSize().y || newPos.x <= 0)
+	if (newPos.x + size.x >= globalConfigs.getGameScreenSize().x || newPos.x <= 0)
 		dir.x *= -1;
-	sf::Vector2f step= (dir/a) * (speed * delta);
+	sf::Vector2f step= (dir/ length) * (speed * delta);
 	pos += step;
 	syncPos();
 }

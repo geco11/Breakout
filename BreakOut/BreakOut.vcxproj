@@ -136,6 +136,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actors.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Screen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

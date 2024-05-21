@@ -7,6 +7,7 @@ void Controller::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(platform);
 	target.draw(level);
 	target.draw(proj);
+	target.draw(screen);
 }
 void Controller::buttonChange(sf::Keyboard::Key a, bool isPressed)
 {
