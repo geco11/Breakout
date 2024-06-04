@@ -14,6 +14,8 @@ protected:
 	void setThickness(float thickness);
 	void setMode(bool m);
 public:
+	sf::Vector2f getPos() { return pos; }
+	sf::Vector2f getSize() { return size; }
 	void syncPos();
 	void loadTexture(std::string a);
 	void syncScale();

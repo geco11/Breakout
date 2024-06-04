@@ -9,6 +9,7 @@ class Projectile:public Actors
 public:
 	void setStatus(bool a);
 	Projectile();
+	void bounce(char dir);
 	void tick(float delta);
 };
 

@@ -11,6 +11,14 @@ Projectile::Projectile()
 	syncPos();
 	syncScale();
 }
+void Projectile::bounce(char dir)
+{
+	if (dir == 'y')
+		this->dir.y *= -1;
+	else
+		if (dir == 'x')
+			this->dir.x *= -1;
+}
 void Projectile::tick(float delta){
 	float length = sqrt(dir.x * dir.x + dir.y * dir.y);
 	sf::Vector2f newPos= (dir / length) * (speed * delta)+pos;

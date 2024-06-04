@@ -10,6 +10,7 @@ class Controller:public sf::Drawable
 	Projectile proj;
 	Screen screen;
 	float delta;
+	bool ColisionPlatform();
 	LevelManager level;
 public:
 	void buttonChange(sf::Keyboard::Key a, bool isPressed);
