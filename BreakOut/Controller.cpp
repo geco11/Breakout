@@ -26,7 +26,7 @@ void Controller::buttonChange(sf::Keyboard::Key a, bool isPressed)
 }
 void Controller::tick(float delta) {
 	this->delta = delta;
-	if(ColisionPlatform())
+	if(ColisionPlatform()&&!proj.dirUp())
 		proj.bounce('y');
 	platform.tick(delta);
 	proj.tick(delta);

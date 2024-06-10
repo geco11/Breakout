@@ -10,6 +10,7 @@ public:
 	void setStatus(bool a);
 	Projectile();
 	void bounce(char dir);
+	bool dirUp()const;
 	void tick(float delta);
 };
 

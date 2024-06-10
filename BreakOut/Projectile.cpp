@@ -19,6 +19,11 @@ void Projectile::bounce(char dir)
 		if (dir == 'x')
 			this->dir.x *= -1;
 }
+bool Projectile::dirUp() const
+{
+	if (dir.y < 0)return true;
+	return false;
+}
 void Projectile::tick(float delta){
 	float length = sqrt(dir.x * dir.x + dir.y * dir.y);
 	sf::Vector2f newPos= (dir / length) * (speed * delta)+pos;
