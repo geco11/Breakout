@@ -8,6 +8,8 @@ class Platform:public Actors
 	char RightButton = 0;
 	char LeftButton = 0;
 public:
+	void DeactivatePlatform();
+	void ActivatePLatform();
 	void buttonChange(sf::Keyboard::Key a,bool isPressed);
 	Platform();
 	void move(sf::Vector2f shift);

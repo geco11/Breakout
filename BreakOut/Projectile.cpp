@@ -2,14 +2,29 @@
 #include"Configs.h"
 
 
+void Projectile::setStatus(bool a)
+{
+}
+void Projectile::resetSpeed()
+{
+	speed = initSpeed;
+}
 Projectile::Projectile()
 {
+	speed=initSpeed;
+	timerReset.setOnFinishFunction([this]() {this->resetSpeed(); });
+	timerReset.setDuration(7);
 	size = { 0.5,0.5 };
 	loadTexture("Pics/ball.png");
 	/*pos.x = globalConfigs.getGameScreenSize().x / 2.0;
 	pos.y = globalConfigs.getGameScreenSize().y - (size.x / 2);*/
 	syncPos();
 	syncScale();
+}
+void Projectile::accelerate(float a)
+{
+	speed *= a;
+	timerReset.start();
 }
 void Projectile::bounce(char dir)
 {
@@ -25,6 +40,7 @@ bool Projectile::dirUp() const
 	return false;
 }
 void Projectile::tick(float delta){
+	timerReset.tick(delta);
 	float length = sqrt(dir.x * dir.x + dir.y * dir.y);
 	sf::Vector2f newPos= (dir / length) * (speed * delta)+pos;
 	if (newPos.y + size.y >= globalConfigs.getGameScreenSize().y || newPos.y <= 0)

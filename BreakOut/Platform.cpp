@@ -3,6 +3,16 @@
 
 
 
+void Platform::DeactivatePlatform()
+{
+	loadTexture("Pics/Platform.png");
+}
+
+void Platform::ActivatePLatform()
+{
+	loadTexture("Pics/PlatformSpeed.png");
+}
+
 void Platform::buttonChange(sf::Keyboard::Key a,bool isPressed)
 {
 	switch (a)

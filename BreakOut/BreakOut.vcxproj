@@ -137,6 +137,7 @@
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actors.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Screen.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

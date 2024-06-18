@@ -23,11 +23,28 @@ bool Controller::ColisionPlatform()
 void Controller::buttonChange(sf::Keyboard::Key a, bool isPressed)
 {
 	platform.buttonChange(a, isPressed);
+	if (a == sf::Keyboard::Space && isPressed) {
+		
+		timerSpace.start();
+	}
+
+	
+}
+Controller::Controller()
+{
+	Platform* platformPtr = &platform;
+	timerSpace.setOnFinishFunction([platformPtr]() {platformPtr->DeactivatePlatform(); });
+	timerSpace.setOnStartFunction([platformPtr]() {platformPtr->ActivatePLatform(); });
+	timerSpace.setDuration(0.3);
 }
 void Controller::tick(float delta) {
 	this->delta = delta;
-	if(ColisionPlatform()&&!proj.dirUp())
+	if (ColisionPlatform() && !proj.dirUp()) {
 		proj.bounce('y');
+		if (!timerSpace.isFinished())
+			proj.accelerate(2);
+	}
 	platform.tick(delta);
+	timerSpace.tick(delta);
 	proj.tick(delta);
 }
