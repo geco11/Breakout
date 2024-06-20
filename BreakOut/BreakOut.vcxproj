@@ -131,6 +131,7 @@
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BreakOut.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="DualVector.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Configs.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="Actors.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="DualVector.h" />
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="Configs.h" />
     <ClInclude Include="Map.h" />

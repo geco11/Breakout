@@ -23,6 +23,14 @@ void Map::LoadFromFile(std::string path)
 	}
 	in.close(); 
 }
+bool Map::checkWall(sf::Vector2f point) {
+	if(point.y<map.size()&&point.x<map[point.y].size())
+	  return map[point.y][point.x] == '#';
+	return false;
+}
+void Map::destroy(sf::Vector2f point) {
+	map[point.y][point.x] = ' ';
+}
 
 void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {

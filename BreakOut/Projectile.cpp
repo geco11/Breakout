@@ -5,12 +5,28 @@
 void Projectile::setStatus(bool a)
 {
 }
+std::vector<sf::Vector2f> Projectile::getControlPoints() const{
+	int cp = 6;
+	std::vector<sf::Vector2f> res;
+	DualVector dt;
+	dt.setCartesian(pos.x, pos.y);
+	dt.setPolar(size.x / 2, dt.getPhi() - 90);
+	res.push_back(pos + size / 2.f + dt.tosf());
+	float step = 180.f / (cp-1);
+	for (int i = 1; i < cp; ++i) {
+		dt.setPhi(dt.getPhi() + step);
+		res.push_back(pos + size / 2.f + dt.tosf());
+	}
+	return res;
+}
+
 void Projectile::resetSpeed()
 {
 	speed = initSpeed;
 }
 Projectile::Projectile()
 {
+	
 	speed=initSpeed;
 	timerReset.setOnFinishFunction([this]() {this->resetSpeed(); });
 	timerReset.setDuration(7);

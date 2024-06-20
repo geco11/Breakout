@@ -37,13 +37,24 @@ Controller::Controller()
 	timerSpace.setOnStartFunction([platformPtr]() {platformPtr->ActivatePLatform(); });
 	timerSpace.setDuration(0.3);
 }
+void Controller::controllBlocks() {
+	std::vector<sf::Vector2f>controllPoints = proj.getControlPoints();
+	for (int i = 0; i < controllPoints.size(); i++){
+		if (level.getMap().checkWall(controllPoints[i]))
+			level.getMap().destroy(controllPoints[i]);
+	}
+}
 void Controller::tick(float delta) {
 	this->delta = delta;
+	
 	if (ColisionPlatform() && !proj.dirUp()) {
 		proj.bounce('y');
 		if (!timerSpace.isFinished())
 			proj.accelerate(2);
 	}
+	if (globalConfigs.getGameScreenSize().y <= proj.getPos().y + proj.getSize().y+0.1)
+		puts("you lost");
+	controllBlocks();
 	platform.tick(delta);
 	timerSpace.tick(delta);
 	proj.tick(delta);

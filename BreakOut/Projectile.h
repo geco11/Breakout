@@ -1,4 +1,5 @@
 #pragma once
+#include"DualVector.h"
 #include<SFML/Graphics.hpp>
 #include"Actors.h"
 #include"Timer.h"
@@ -17,5 +18,6 @@ public:
 	void bounce(char dir);
 	bool dirUp()const;
 	void tick(float delta);
+	std::vector<sf::Vector2f> getControlPoints() const;
 };
 

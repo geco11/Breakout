@@ -14,6 +14,7 @@ class Controller:public sf::Drawable
 	float delta;
 	bool ColisionPlatform();
 	LevelManager level;
+	void controllBlocks();
 public:
 	void buttonChange(sf::Keyboard::Key a, bool isPressed);
 	Controller();
