@@ -7,6 +7,19 @@ void Map::manual(std::vector<std::string> Map)
 {
 	map = Map;
 }
+bool Map::isClear() {
+	return bricksC <= 0;
+}	
+int Map::countWalls(){
+	bricksC = 0;
+	for (int i = 0; i < map.size(); i++){
+		for (int j = 0; j < map[i].size(); ++j) {
+			if (map[i][j] = '#')
+				bricksC++;
+		}
+	}
+	return bricksC;
+}
 
 void Map::LoadFromFile(std::string path)
 {
@@ -22,6 +35,7 @@ void Map::LoadFromFile(std::string path)
 		}
 	}
 	in.close(); 
+	countWalls();
 }
 bool Map::checkWall(sf::Vector2f point) {
 	if(point.y<map.size()&&point.x<map[point.y].size())
@@ -30,6 +44,7 @@ bool Map::checkWall(sf::Vector2f point) {
 }
 void Map::destroy(sf::Vector2f point) {
 	map[point.y][point.x] = ' ';
+	bricksC--;
 }
 
 void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const

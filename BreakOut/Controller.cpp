@@ -54,6 +54,8 @@ void Controller::tick(float delta) {
 	}
 	if (globalConfigs.getGameScreenSize().y <= proj.getPos().y + proj.getSize().y+0.1)
 		puts("you lost");
+	if (level.getMap().isClear())
+		puts(" YOU WIN");
 	controllBlocks();
 	platform.tick(delta);
 	timerSpace.tick(delta);
