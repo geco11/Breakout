@@ -31,14 +31,17 @@ void Platform::buttonChange(sf::Keyboard::Key a,bool isPressed)
 		break;
 	}
 }
+void Platform::resetPos() {
+	pos.x = globalConfigs.getGameScreenSize().x / 2.0;
+	pos.y = globalConfigs.getGameScreenSize().y - (size.x / 2);
+}
 
 Platform::Platform()
 {
 	size = { 2,0.5 };
 
 	loadTexture("Pics/platform.png");
-	pos.x = globalConfigs.getGameScreenSize().x / 2.0;
-	pos.y= globalConfigs.getGameScreenSize().y - (size.x/2);
+	resetPos();
 	syncPos();
 	syncScale();
 }

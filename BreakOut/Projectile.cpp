@@ -5,8 +5,14 @@
 void Projectile::setStatus(bool a)
 {
 }
+void Projectile::bounceByPoint(int i) {
+	if (dir.x * dir.y > 0 && i < cp / 2 || dir.x * dir.y < 0 && i > cp / 2)
+		dir.x *= -1;
+	else
+		dir.y *= -1;
+}
+
 std::vector<sf::Vector2f> Projectile::getControlPoints() const{
-	int cp = 6;
 	std::vector<sf::Vector2f> res;
 	DualVector dt;
 	dt.setCartesian(pos.x, pos.y);
@@ -19,10 +25,13 @@ std::vector<sf::Vector2f> Projectile::getControlPoints() const{
 	}
 	return res;
 }
-
+void Projectile::setPos(sf::Vector2f pos) {
+	this->pos = pos;
+}
 void Projectile::resetSpeed()
 {
 	speed = initSpeed;
+	timerReset.stop();
 }
 Projectile::Projectile()
 {

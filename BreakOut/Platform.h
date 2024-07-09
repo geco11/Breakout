@@ -10,6 +10,7 @@ class Platform:public Actors
 public:
 	void DeactivatePlatform();
 	void ActivatePLatform();
+	void resetPos();
 	void buttonChange(sf::Keyboard::Key a,bool isPressed);
 	Platform();
 	void move(sf::Vector2f shift);

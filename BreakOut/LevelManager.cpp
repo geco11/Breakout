@@ -4,6 +4,9 @@ LevelManager::LevelManager()
 {
 	map.LoadFromFile(getPath());
 }
+void LevelManager::reload() {
+	switchLevel(0);
+}
 
 void LevelManager::switchLevel(int a)
 {

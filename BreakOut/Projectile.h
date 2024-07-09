@@ -5,12 +5,15 @@
 #include"Timer.h"
 class Projectile:public Actors
 {
+	int cp = 6;
 	float speed ;
 	float initSpeed=4 ;
 	Timer timerReset;
 	sf::Vector2f dir = { 0.5,1 };
 	bool isPaused=true;
 public:
+	void setPos(sf::Vector2f pos);
+	void bounceByPoint(int i);
 	void setStatus(bool a);
 	Projectile();
 	void resetSpeed();

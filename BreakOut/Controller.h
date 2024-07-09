@@ -12,6 +12,9 @@ class Controller:public sf::Drawable
 	Timer timerSpace;
 	Screen screen;
 	float delta;
+	void youWon();
+	void resetProj();
+	void youLost();
 	bool ColisionPlatform();
 	LevelManager level;
 	void controllBlocks();

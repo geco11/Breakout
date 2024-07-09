@@ -36,14 +36,33 @@ Controller::Controller()
 	timerSpace.setOnFinishFunction([platformPtr]() {platformPtr->DeactivatePlatform(); });
 	timerSpace.setOnStartFunction([platformPtr]() {platformPtr->ActivatePLatform(); });
 	timerSpace.setDuration(0.3);
+    resetProj();
 }
 void Controller::controllBlocks() {
 	std::vector<sf::Vector2f>controllPoints = proj.getControlPoints();
 	for (int i = 0; i < controllPoints.size(); i++){
-		if (level.getMap().checkWall(controllPoints[i]))
+		if (level.getMap().checkWall(controllPoints[i])) {
 			level.getMap().destroy(controllPoints[i]);
+			proj.bounceByPoint(i);
+		}
 	}
 }
+void Controller::resetProj() {
+	platform.resetPos();
+	proj.resetSpeed();
+	proj.setPos({ platform.getPos().x+platform.getSize().x / 2.0 - proj.getSize().x/2.0,platform.getPos().y - proj.getSize().y});
+}
+
+void Controller::youLost() {
+	level.reload();
+	resetProj();
+}
+void Controller::youWon() {
+	level.switchLevel(1);
+	
+    resetProj();
+}
+
 void Controller::tick(float delta) {
 	this->delta = delta;
 	
@@ -52,10 +71,11 @@ void Controller::tick(float delta) {
 		if (!timerSpace.isFinished())
 			proj.accelerate(2);
 	}
-	if (globalConfigs.getGameScreenSize().y <= proj.getPos().y + proj.getSize().y+0.1)
-		puts("you lost");
-	if (level.getMap().isClear())
-		puts(" YOU WIN");
+	if (globalConfigs.getGameScreenSize().y <= proj.getPos().y + proj.getSize().y + 0.1)
+		youLost();
+		if (level.getMap().isClear()) {
+		  youWon();
+		}
 	controllBlocks();
 	platform.tick(delta);
 	timerSpace.tick(delta);
