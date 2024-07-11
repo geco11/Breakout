@@ -9,7 +9,7 @@ class Projectile:public Actors
 	float speed ;
 	float initSpeed=4 ;
 	Timer timerReset;
-	sf::Vector2f dir = { 0.5,1 };
+	sf::Vector2f dir = { 0,-1 };
 	bool isPaused=true;
 public:
 	void setPos(sf::Vector2f pos);
@@ -18,7 +18,7 @@ public:
 	Projectile();
 	void resetSpeed();
 	void accelerate(float a);
-	void bounce(char dir);
+	void bounce(char dir,float speed=0);
 	bool dirUp()const;
 	void tick(float delta);
 	std::vector<sf::Vector2f> getControlPoints() const;

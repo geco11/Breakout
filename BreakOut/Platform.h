@@ -11,6 +11,7 @@ public:
 	void DeactivatePlatform();
 	void ActivatePLatform();
 	void resetPos();
+	float getSpeed() { return speed; }
 	void buttonChange(sf::Keyboard::Key a,bool isPressed);
 	Platform();
 	void move(sf::Vector2f shift);

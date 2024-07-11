@@ -15,7 +15,7 @@ void Projectile::bounceByPoint(int i) {
 std::vector<sf::Vector2f> Projectile::getControlPoints() const{
 	std::vector<sf::Vector2f> res;
 	DualVector dt;
-	dt.setCartesian(pos.x, pos.y);
+	dt.setCartesian(dir.x, dir.y);
 	dt.setPolar(size.x / 2, dt.getPhi() - 90);
 	res.push_back(pos + size / 2.f + dt.tosf());
 	float step = 180.f / (cp-1);
@@ -51,10 +51,12 @@ void Projectile::accelerate(float a)
 	speed *= a;
 	timerReset.start();
 }
-void Projectile::bounce(char dir)
+void Projectile::bounce(char dir, float speed)
 {
-	if (dir == 'y')
+	if (dir == 'y') {
+		this->dir.x += speed*0.2;
 		this->dir.y *= -1;
+	}
 	else
 		if (dir == 'x')
 			this->dir.x *= -1;

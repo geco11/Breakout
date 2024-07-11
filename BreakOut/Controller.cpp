@@ -50,7 +50,7 @@ void Controller::controllBlocks() {
 void Controller::resetProj() {
 	platform.resetPos();
 	proj.resetSpeed();
-	proj.setPos({ platform.getPos().x+platform.getSize().x / 2.0 - proj.getSize().x/2.0,platform.getPos().y - proj.getSize().y});
+	proj.setPos({ platform.getPos().x+platform.getSize().x / 2.0f - proj.getSize().x/2.0f,platform.getPos().y - proj.getSize().y});
 }
 
 void Controller::youLost() {
@@ -67,7 +67,7 @@ void Controller::tick(float delta) {
 	this->delta = delta;
 	
 	if (ColisionPlatform() && !proj.dirUp()) {
-		proj.bounce('y');
+		proj.bounce('y',platform.getSpeed());
 		if (!timerSpace.isFinished())
 			proj.accelerate(2);
 	}
