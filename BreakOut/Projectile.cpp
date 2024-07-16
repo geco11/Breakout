@@ -54,7 +54,10 @@ void Projectile::accelerate(float a)
 void Projectile::bounce(char dir, float speed)
 {
 	if (dir == 'y') {
-		this->dir.x += speed*0.2;
+		DualVector dt;
+		dt.setCartesian(this->dir.x,this->dir.y);
+		dt.setPhi(dt.getPhi()+speed*4);
+		this->dir = dt.tosf();
 		this->dir.y *= -1;
 	}
 	else

@@ -11,7 +11,10 @@ void LevelManager::reload() {
 void LevelManager::switchLevel(int a)
 {
 	index += a;
-	map.LoadFromFile(getPath());
+
+	if(!map.LoadFromFile(getPath())){
+		puts("you won");
+	}
 }
 
 std::string LevelManager::getPath()

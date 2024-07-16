@@ -21,7 +21,7 @@ int Map::countWalls(){
 	return bricksC;
 }
 
-void Map::LoadFromFile(std::string path)
+bool Map::LoadFromFile(std::string path)
 {
 	std::string line;
 
@@ -34,8 +34,11 @@ void Map::LoadFromFile(std::string path)
 			map.push_back(line);
 		}
 	}
+	else
+		return false;
 	in.close(); 
 	countWalls();
+	return true;
 }
 bool Map::checkWall(sf::Vector2f point) {
 	if(point.y<map.size()&&point.x<map[point.y].size())
