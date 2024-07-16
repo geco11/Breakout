@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include"Configs.h"
+#include<thread>
+#include<chrono>
 #include<iostream>
 #include"Controller.h"
 #include<Windows.h>
@@ -17,7 +19,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(globalConfigs.getScreen<int>().x, globalConfigs.getScreen<int>().y), "SFML Window");
     // Main loop
     sf::View view = window.getDefaultView();
-    while (window.isOpen())
+    while (window.isOpen()&&!globalConfigs.getIsFinished())
     {
         // Handle events
         sf::Event event;
@@ -51,6 +53,7 @@ int main()
         window.draw(controller);
         window.display();
     }
-
+    if(globalConfigs.getIsFinished())
+      std::this_thread::sleep_for(std::chrono::milliseconds(3000));
     return 0;
 }

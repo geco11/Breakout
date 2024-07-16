@@ -8,6 +8,7 @@ class LevelManager :public sf::Drawable
 	std::string folder="Maps";
 	int index = 0;
 public:
+	int getIndex()const { return index; }
 	void reload();
 	Map& getMap() { return map; }
 	LevelManager();

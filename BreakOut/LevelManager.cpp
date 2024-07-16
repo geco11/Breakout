@@ -13,7 +13,7 @@ void LevelManager::switchLevel(int a)
 	index += a;
 
 	if(!map.LoadFromFile(getPath())){
-		puts("you won");
+		globalConfigs.setIsFinished(true);
 	}
 }
 

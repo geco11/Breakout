@@ -3,9 +3,12 @@
 
 class Configs {
 	float len;
+	bool isFinished = false;
 	sf::Vector2f gameScreenSize;
 	sf::Vector2i screenSize;
 public:
+	void setIsFinished(bool a) { isFinished = a; }
+	bool getIsFinished()const { return isFinished; }
 	void setScreen(sf::Vector2i screenSize);
 	/**
 	screen size is abstract*/

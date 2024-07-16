@@ -9,10 +9,14 @@ class Controller:public sf::Drawable
 {
 	Platform platform;
 	Projectile proj;
+	int hp = 3;
 	Timer timerSpace;
 	Screen screen;
+	Timer hpTimer;
+	sf::Font font;
 	float delta;
 	void youWon();
+	sf::Text strToText(std::string text,sf::Vector2f pos)const;
 	void resetProj();
 	void youLost();
 	bool ColisionPlatform();
