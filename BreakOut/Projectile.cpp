@@ -6,6 +6,10 @@ void Projectile::setStatus(bool a)
 {
 }
 void Projectile::bounceByPoint(int i) {
+	if (this->dir.x < 0.0001f) {
+		this->dir.y *= -1;
+		return;
+	}
 	if (dir.x * dir.y > 0 && i < cp / 2 || dir.x * dir.y < 0 && i > cp / 2)
 		dir.x *= -1;
 	else
@@ -53,6 +57,8 @@ void Projectile::accelerate(float a)
 }
 void Projectile::bounce(char dir, float speed)
 {
+	
+	
 	if (dir == 'y') {
 		DualVector dt;
 		dt.setCartesian(this->dir.x,this->dir.y);
@@ -70,6 +76,7 @@ bool Projectile::dirUp() const
 	return false;
 }
 void Projectile::tick(float delta){
+	
 	timerReset.tick(delta);
 	float length = sqrt(dir.x * dir.x + dir.y * dir.y);
 	sf::Vector2f newPos= (dir / length) * (speed * delta)+pos;

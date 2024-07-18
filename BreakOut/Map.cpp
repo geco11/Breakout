@@ -14,7 +14,7 @@ int Map::countWalls(){
 	bricksC = 0;
 	for (int i = 0; i < map.size(); i++){
 		for (int j = 0; j < map[i].size(); ++j) {
-			if (map[i][j] = '#')
+			if (map[i][j] == '#')
 				bricksC++;
 		}
 	}
@@ -31,6 +31,7 @@ bool Map::LoadFromFile(std::string path)
 		map.clear();
 		while (std::getline(in, line))
 		{
+
 			map.push_back(line);
 		}
 	}
@@ -51,6 +52,7 @@ void Map::destroy(sf::Vector2f point) {
 }
 
 void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
+ 
 {
 	for (int i = 0;i<map.size(); i++) {
 		for (int j = 0; j < map[i].size(); j++) {

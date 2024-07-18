@@ -94,6 +94,8 @@ void Controller::youWon() {
 }
 
 void Controller::tick(float delta) {
+	if (0.7 < delta)
+		delta = 0.7;
 	this->delta = delta;
 	
 	if (ColisionPlatform() && !proj.dirUp()) {
