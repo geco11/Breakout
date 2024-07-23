@@ -6,7 +6,7 @@ void Projectile::setStatus(bool a)
 {
 }
 void Projectile::bounceByPoint(int i) {
-	if (this->dir.x < 0.0001f) {
+	if (fabs(this->dir.x) < 0.0001f) {
 		this->dir.y *= -1;
 		return;
 	}
