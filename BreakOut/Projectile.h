@@ -5,6 +5,7 @@
 #include"Timer.h"
 class Projectile:public Actors
 {
+	sf::Vector2<bool> dirChanged = {false,false};
 	int cp = 6;
 	float speed ;
 	float initSpeed=4 ;

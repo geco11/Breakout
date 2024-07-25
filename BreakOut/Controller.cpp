@@ -62,10 +62,31 @@ void Controller::controllBlocks() {
 	std::vector<sf::Vector2f>controllPoints = proj.getControlPoints();
 	for (int i = 0; i < controllPoints.size(); i++){
 		if (level.getMap().checkWall(controllPoints[i])) {
+			sf::Vector2i wall;
+			wall.x = controllPoints[i].x;
+			wall.y = controllPoints[i].y;
+			int part1 = 0, part2 = 0;
+			for (int j = 0; j < controllPoints.size(); j++)
+			{
+				sf::Vector2i currentBlock;
+				currentBlock.x = controllPoints[j].x;
+				currentBlock.y = controllPoints[j].y;
+				if (currentBlock==wall){
+					if (j < controllPoints.size()/2)part1++;
+					  else part2++;
+				}
+			}
 			level.getMap().destroy(controllPoints[i]);
-			proj.bounceByPoint(i);
+			if (part1>part2)
+			{
+				proj.bounceByPoint(0);
+
+			}else
+			  proj.bounceByPoint(controllPoints.size());
+
 		}
 	}
+
 }
 void Controller::resetProj() {
 	platform.resetPos();
